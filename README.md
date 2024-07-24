@@ -2,5 +2,5 @@
 
 ```
 sudo apt install yadm &&
-yadm clone https://github.com/overclockedllama/dotfiles.git
+yadm clone https://github.com/mknoetze/dotfiles.git
 ```
