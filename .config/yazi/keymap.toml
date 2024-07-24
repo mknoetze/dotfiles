@@ -149,6 +149,7 @@ keymap = [
 	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go to the config directory" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Go to a directory interactively" },
+	{ on = [ "g", "C" ], run = "cd ~/code", desc = "Go to the code directory" },
 
 	# Help
 	{ on = "~", run = "help", desc = "Open help" },

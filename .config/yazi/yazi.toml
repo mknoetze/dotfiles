@@ -80,6 +80,10 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 
 [plugin]
+prepend_previewers = [
+    { mime = "audio/*",   run = "exifaudio"},
+    { name = "*.md", run = "glow" },
+]
 
 fetchers = [
 	# Mimetype
@@ -120,6 +124,7 @@ previewers = [
 	# Fallback
 	{ name = "*", run = "file" },
 ]
+
 
 [input]
 cursor_blink = false
@@ -192,3 +197,5 @@ sort_translit  = false
 
 [log]
 enabled = false
+
+
