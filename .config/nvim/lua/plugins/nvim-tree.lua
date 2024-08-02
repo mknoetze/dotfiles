@@ -79,7 +79,10 @@ return {
                         "toggle_node",
                         nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
                     },
-
+                    ["h"] = {
+                        "toggle_node",
+                        nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
+                    },
 
                 },
             },
