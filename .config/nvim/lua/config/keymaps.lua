@@ -29,4 +29,4 @@ vim.keymap.set('n', "<leader>pt",":Themery<CR>",{desc="Change Theme", silent=tru
 vim.keymap.set('n', "<leader>pm",":Mason<CR>",{desc="Open Mason", silent=true, noremap=true})
 vim.keymap.set('n', "<leader>pl",":Lazy<CR>",{desc="Open Mason", silent=true, noremap=true})
 vim.keymap.set('n', "<leader>C",":noh<CR>",{desc="Clear Search Highlights", silent=true, noremap=true})
-vim.keymap.set('n', "<leader>ca", "ggVG", {desc="Select All", silent=true, noremap=true})
+vim.keymap.set('n', "<leader>c", "ggVG", {desc="Select All", silent=true, noremap=true})
