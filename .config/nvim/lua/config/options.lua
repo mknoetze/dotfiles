@@ -21,6 +21,5 @@ set.shiftwidth = 4
 set.expandtab = true
 set.shiftround = true
 set.mousemoveevent = true
--- set.winbar = " %{%v:lua.vim.fn.expand('%F')%}  %{%v:lua.require'nvim-navic'.get_location()%}"
 set.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 

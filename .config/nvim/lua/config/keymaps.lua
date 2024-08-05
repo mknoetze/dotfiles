@@ -4,8 +4,9 @@ global.maplocalleader = ' '
 local keymap = vim.keymap
 
 -- Toggle comment line
-keymap.set('n', '<Leader>/', 'gcc', { silent = true, desc = "Toggle comment line" })
-keymap.set('x', '<Leader>/', 'gc', { silent = true, desc = "Toggle comment" })
+-- Toggle comment line
+keymap.set('n', '<leader>/', '<Plug>(comment_toggle_linewise)', { noremap=true, silent=true, desc="Toggle comment line" })
+keymap.set('x', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', { noremap=true, silent=true, desc="Toggle comment" })
 
 -- Split navigation
 -- keymap.set('n', '<C-H>', '<C-w>h', { silent = true, desc = "Move to left split" })
@@ -27,3 +28,5 @@ keymap.set('n', '<Leader>dw','<Cmd>set wrap!<CR>', {desc="Toggle Line Wrap", sil
 vim.keymap.set('n', "<leader>pt",":Themery<CR>",{desc="Change Theme", silent=true, noremap=true})
 vim.keymap.set('n', "<leader>pm",":Mason<CR>",{desc="Open Mason", silent=true, noremap=true})
 vim.keymap.set('n', "<leader>pl",":Lazy<CR>",{desc="Open Mason", silent=true, noremap=true})
+vim.keymap.set('n', "<leader>C",":noh<CR>",{desc="Clear Search Highlights", silent=true, noremap=true})
+vim.keymap.set('n', "<leader>ca", "ggVG", {desc="Select All", silent=true, noremap=true})
