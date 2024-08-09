@@ -12,4 +12,9 @@ return {
     {'doums/darcula'},
     {'briones-gabriel/darcula-solid.nvim'},
     {'rktjmp/lush.nvim'},
+    {'xero/miasma.nvim'},
+    {'titanzero/zephyrium'},
+    {'kvrohit/substrata.nvim'},
+    {'lmburns/kimbox'},
+    {'lewpoly/sherbet.nvim'},
 }

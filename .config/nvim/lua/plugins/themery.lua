@@ -59,17 +59,29 @@ return {
                     colorscheme = 'kanagawa-wave'
                 },
                 {
-                    name = 'darcula',
-                    colorscheme = 'darcula'
-                },
-                {
                     name = 'darcula-solid',
                     colorscheme = 'darcula-solid'
                 },
-
-
-
-
+                {
+                    name = 'miasma',
+                    colorscheme = 'miasma'
+                },
+                {
+                    name = 'zephyrium',
+                    colorscheme = 'zephyrium'
+                },
+                {
+                    name = 'substrata',
+                    colorscheme = 'substrata'
+                },
+                {
+                    name = 'kimbox',
+                    colorscheme = 'kimbox'
+                },
+                {
+                    name = 'sherbet',
+                    colorscheme = 'sherbet'
+                },
             },
             themeConfigFile = '~/.config/nvim/lua/config/colorscheme.lua',
             livePreview = true,
