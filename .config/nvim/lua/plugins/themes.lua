@@ -17,4 +17,6 @@ return {
     {'kvrohit/substrata.nvim'},
     {'lmburns/kimbox'},
     {'lewpoly/sherbet.nvim'},
+    {'hardselius/warlock'},
+    {'gmr458/cold.nvim'},
 }

@@ -13,6 +13,7 @@
   "cmp-spell": { "branch": "master", "commit": "694a4e50809d6d645c1ea29015dad0c293f019d6" },
   "cmp-under-comparator": { "branch": "master", "commit": "6857f10272c3cfe930cece2afa2406e1385bfef8" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
+  "cold.nvim": { "branch": "master", "commit": "0e074d2a2ebce6b913c1eb5c95edabd063793f2e" },
   "csvlens.nvim": { "branch": "main", "commit": "987375e2cf6399850f7f801b53b89c981ed652fa" },
   "cyberdream.nvim": { "branch": "main", "commit": "cb68ab9fcc572f134f682e4e1ed65584baa4a279" },
   "darcula": { "branch": "master", "commit": "faf8dbab27bee0f27e4f1c3ca7e9695af9b1242b" },
@@ -64,6 +65,7 @@
   "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
   "vim-startuptime": { "branch": "master", "commit": "ac2cccb5be617672add1f4f3c0a55ce99ba34e01" },
   "vscode.nvim": { "branch": "main", "commit": "46212834b32866ce45479f885ca82d2259044f46" },
+  "warlock": { "branch": "master", "commit": "12c7772d35fd6956940d716bb71c9f3855a45a12" },
   "which-key.nvim": { "branch": "main", "commit": "af4ded85542d40e190014c732fa051bdbf88be3d" },
   "zephyrium": { "branch": "master", "commit": "c8f6c4b803c22aad7302be37a7bda3380f6e8e9c" }
 }

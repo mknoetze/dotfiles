@@ -67,21 +67,18 @@ return {
                     colorscheme = 'miasma'
                 },
                 {
-                    name = 'zephyrium',
-                    colorscheme = 'zephyrium'
-                },
-                {
-                    name = 'substrata',
-                    colorscheme = 'substrata'
-                },
-                {
-                    name = 'kimbox',
-                    colorscheme = 'kimbox'
-                },
-                {
                     name = 'sherbet',
                     colorscheme = 'sherbet'
                 },
+                {
+                    name = 'warlock',
+                    colorscheme = 'warlock'
+                },
+                {
+                    name = 'cold',
+                    colorscheme = 'cold'
+                },
+
             },
             themeConfigFile = '~/.config/nvim/lua/config/colorscheme.lua',
             livePreview = true,
