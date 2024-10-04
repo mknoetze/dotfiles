@@ -16,9 +16,6 @@ return {
         { 'enable', 'disable' },
         { 'Enable', 'Disable' },
         { 'ENABLE', 'DISABLE' },
-        -- enable → disable
-        -- Enable → Disable
-        -- ENABLE → DISABLE
       }
     })
   end

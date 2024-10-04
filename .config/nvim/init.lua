@@ -1,9 +1,6 @@
-require('config.options')
-require('config.keymaps')
-require('config.lazy')
-require('config.colorscheme')
--- vim.opt.guicursor = ''
--- vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci:ver25-Cursor/lCursor,r-cr:hor20,o:hor50"
+require("config.keymaps")
+require("config.options")
+require("config.lazy")
 vim.cmd([[autocmd FileType yaml setlocal indentexpr=]])
 vim.cmd([[autocmd FileType yml setlocal indentexpr=]])
 vim.opt.guicursor = {

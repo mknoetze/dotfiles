@@ -1,12 +1,10 @@
 return {
-    'lukas-reineke/indent-blankline.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
+  {
+    "nmac427/guess-indent.nvim",
+    enabled = true,
     config = function()
-        require('ibl').setup({
-            enabled = true,
-            scope = {
-                enabled = false,
-            },
-        })
-    end
+      require("guess-indent").setup({})
+    end,
+    event = "BufReadPost",
+  },
 }
