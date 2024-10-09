@@ -20,6 +20,7 @@ require("lazy").setup({
     { import = "plugins" },
     { import = "plugins.lsp" },
     { import = "plugins.themes" },
+    { import = "plugins.extra" },
   },
   install = {
     missing = true,

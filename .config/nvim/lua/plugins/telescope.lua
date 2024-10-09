@@ -92,7 +92,14 @@ return {
     config = function()
       local telescope = require("telescope")
       telescope.setup({
-        file_ignore_patterns = { "%.git/." },
+        file_ignore_patterns = {
+          ".git/", "venv", "__pycache__", "%.xlsx", "%.jpg", "%.jpeg", "%.png", "%.webp",
+          "%.pdf", "%.odt", "%.ico", "%.pptx", "%.doc", "%.docx", "%.exe", "%.dll", "%.so",
+          "%.dylib", "%.class", "%.pyc", "%.o", "%.a", "%.out", "%.bin", "%.jar", "%.dat",
+          "%.mp3", "%.ogg", "%.flac", "%.mp4", "%.avi", "%.mkv", "%.mov", "%.zip", "%.tar",
+          "%.gz", "%.bz2", "%.7z", "%.iso", "%.img", "%.dmg", "%.svg",
+          "%.eot", "%.ttf", "%.otf", "%.bak", "%.tmp", "%.xd"
+        },
         defaults = {
           preview = {
             treesitter = false,
@@ -100,10 +107,10 @@ return {
         },
         extensions = {
           fzf = {
-            fuzzy = true, -- false will only do exact matching
+            fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
           },
         },
         borderchars = {
