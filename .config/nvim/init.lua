@@ -49,7 +49,25 @@ vim.api.nvim_create_user_command(
   end,
   {}
 )
+function SetRandomTheme()
+  -- Get the list of all installed color schemes
+  local themes = vim.fn.getcompletion('', 'color')
 
+  -- Seed the random number generator
+  math.randomseed(os.time())
+
+  -- Pick a random theme from the list
+  local random_theme = themes[math.random(#themes)]
+
+  -- Set the chosen theme
+  vim.cmd("colorscheme " .. random_theme)
+
+  -- Optional: print the selected theme to the command line
+  print("Theme set to: " .. random_theme)
+end
+
+-- Assign the function to <space>pr
+vim.api.nvim_set_keymap('n', '<space>pr', ':lua SetRandomTheme()<CR>', { noremap = true, silent = true, desc="Set Random Theme" })
 -- Command to toggle diagnostics
 vim.api.nvim_create_user_command(
   'DiagnosticsToggle',
