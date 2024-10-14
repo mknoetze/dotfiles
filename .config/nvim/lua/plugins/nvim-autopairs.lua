@@ -1,7 +1,7 @@
 -- autopairing of (){}[] etc
 return {
   "windwp/nvim-autopairs",
-  enabled = false,
+  enabled = true,
   event = "InsertEnter",
   config = function(_, opts)
     require("nvim-autopairs").setup(opts)
