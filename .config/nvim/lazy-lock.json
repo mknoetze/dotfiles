@@ -5,6 +5,7 @@
   "apprentice.nvim": { "branch": "main", "commit": "e6cf4bcbad47433e3ff870bb2f71ef46c8b02fd4" },
   "bamboo.nvim": { "branch": "master", "commit": "c245d90c490c681470389e28782b161491bec97c" },
   "barbar.nvim": { "branch": "master", "commit": "ca1326f7d87acfd47b0cbeeb3bef98cec73a92be" },
+  "better-escape.nvim": { "branch": "master", "commit": "bb197e51a91a635deb88630813c3bfc284413697" },
   "boole.nvim": { "branch": "main", "commit": "7b4a3dae28e3b2497747aa840439e9493cabdc49" },
   "ccc.nvim": { "branch": "main", "commit": "7c639042583c7bdc7ce2e37e5a0e0aa6d0659c6a" },
   "cinnamon.nvim": { "branch": "master", "commit": "ecd211e46a1d4fb0efffbdb2c2bbd59785605870" },
