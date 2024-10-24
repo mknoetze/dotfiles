@@ -16,6 +16,8 @@ return {
 					"lua",
 					"vim",
 					"python",
+          "c",
+          "cpp",
 					"markdown_inline",
 					"dockerfile",
 					"yaml",

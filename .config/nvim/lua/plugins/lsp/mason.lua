@@ -30,6 +30,7 @@ return {
 				"lua_ls",
 				"pyright",
 				"bashls",
+        "clangd",
 				"dockerls",
 				"docker_compose_language_service",
 				"yamlls",
