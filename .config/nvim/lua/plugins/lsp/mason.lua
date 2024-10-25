@@ -34,10 +34,6 @@ return {
 				"dockerls",
 				"docker_compose_language_service",
 				"yamlls",
-				"cssls",
-				"css_variables",
-				"html",
-				"robotframework_ls",
 			},
 		})
 
@@ -46,7 +42,6 @@ return {
 				"ruff",
 				"checkmake",
 				"docker_compose_language_service",
-				"quick_lint_js",
 			},
 		})
 	end,
