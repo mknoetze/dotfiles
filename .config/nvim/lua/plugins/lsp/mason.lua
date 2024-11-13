@@ -28,9 +28,13 @@ return {
 			-- list of servers for mason to install
 			ensure_installed = {
 				"lua_ls",
-				"pyright",
+        "pyright",
+        "taplo",
+        "ruff_lsp",
 				"bashls",
         "clangd",
+        "jsonls",
+        "cmake",
 				"dockerls",
 				"docker_compose_language_service",
 				"yamlls",
@@ -39,7 +43,6 @@ return {
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"ruff",
 				"checkmake",
 				"docker_compose_language_service",
 			},
