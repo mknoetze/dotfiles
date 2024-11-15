@@ -13,6 +13,7 @@ return {
       { "<leader>l", group = "LSP"},
       { "<leader>d", group = "Display"},
       { "<leader>f", group = "File"},
+      { "<leader>p", group = "Plugins"},
     })
   end,
 }

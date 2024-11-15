@@ -18,80 +18,85 @@ return {
         end,
         desc = "Find File (CWD)",
       },
-      {
-        "<leader>sh",
-        function()
-          require("telescope.builtin").help_tags()
-        end,
-        desc = "Find Help",
-      },
-      {
-        "<leader>sH",
-        function()
-          require("telescope.builtin").highlights()
-        end,
-        desc = "Find highlight groups",
-      },
-      {
-        "<leader>sM",
-        function()
-          require("telescope.builtin").man_pages()
-        end,
-        desc = "Map Pages",
-      },
+      -- {
+      --   "<leader>sh",
+      --   function()
+      --     require("telescope.builtin").help_tags()
+      --   end,
+      --   desc = "Find Help",
+      -- },
+      -- {
+      --   "<leader>sH",
+      --   function()
+      --     require("telescope.builtin").highlights()
+      --   end,
+      --   desc = "Find highlight groups",
+      -- },
+      -- {
+      --   "<leader>sM",
+      --   function()
+      --     require("telescope.builtin").man_pages()
+      --   end,
+      --   desc = "Map Pages",
+      -- },
       {
         "<leader>so",
         function()
           require("telescope.builtin").oldfiles()
         end,
-        desc = "Open Recent File",
+        desc = "Search Recent File",
       },
       {
         "<leader>sg",
         function()
           require("telescope.builtin").live_grep()
         end,
-        desc = "Live Grep",
+        desc = "Search Live Grep",
       },
       {
         "<leader>sw",
         function()
           require("telescope.builtin").grep_string()
         end,
-        desc = "Grep String",
+        desc = "Search Current String",
       },
       {
         "<leader>sk",
         function()
           require("telescope.builtin").keymaps()
         end,
-        desc = "Keymaps",
+        desc = "Search Keymaps",
       },
       {
         "<leader>sC",
         function()
           require("telescope.builtin").commands()
         end,
-        desc = "Commands",
+        desc = "Search Commands",
       },
       {
         "<leader><leader>",
         function()
           require("telescope.builtin").buffers()
         end,
-        desc = "Buffers",
+        desc = "Search For Buffers",
       },
       {
         "<leader>sd",
         function()
           require("telescope.builtin").diagnostics()
         end,
-        desc = "diagnostics",
+        desc = "Search Diagnostics",
       },
     },
     config = function()
       local telescope = require("telescope")
       telescope.setup({
+        pickers = {
+          oldfiles = {
+            cwd_only = true,
+          }
+        },
         file_ignore_patterns = {
           ".git/", "venv", "__pycache__", "%.xlsx", "%.jpg", "%.jpeg", "%.png", "%.webp",
           "%.pdf", "%.odt", "%.ico", "%.pptx", "%.doc", "%.docx", "%.exe", "%.dll", "%.so",
