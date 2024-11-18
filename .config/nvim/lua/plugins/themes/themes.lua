@@ -68,4 +68,9 @@ return {
   {'chrsm/paramount-ng.nvim'},
   {'olimorris/onedarkpro.nvim'},
   {'kdheepak/monochrome.nvim'},
+  {'nyoom-engineering/oxocarbon.nvim'},
+  {'aktersnurra/no-clown-fiesta.nvim'},
+  {'morhetz/gruvbox'},
+  {'zenbones-theme/zenbones.nvim'},
+  {'Domeee/mosel.nvim'}
 }
