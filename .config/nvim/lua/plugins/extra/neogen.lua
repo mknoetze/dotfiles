@@ -1,5 +1,3 @@
--- A better annotation generator.
--- TODO: find the usage of this plugin
 return {
 	"danymat/neogen",
 	enabled = true,
@@ -25,7 +23,7 @@ return {
 			"n",
 			"<leader>fd",
 			":lua require('neogen').generate()<CR>",
-			{ silent = true, desc = "Generate Documentation" }
+			{ silent = true, desc = "Generate Docstrings" }
 		)
 	end,
 }
