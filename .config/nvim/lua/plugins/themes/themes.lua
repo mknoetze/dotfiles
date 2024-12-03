@@ -55,7 +55,6 @@ return {
   { 'srcery-colors/srcery-vim' },
   { 'EdenEast/nightfox.nvim' },
   {'diegoulloao/neofusion.nvim'},
-  {'oxfist/night-owl.nvim'},
   {'olivercederborg/poimandres.nvim'},
   {'Mofiqul/adwaita.nvim'},
   {'ramojus/mellifluous.nvim'},

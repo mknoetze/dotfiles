@@ -30,7 +30,7 @@ return {
 				"lua_ls",
         "pyright",
         "taplo",
-        "ruff_lsp",
+        "ruff",
 				"bashls",
         "clangd",
         "jsonls",
@@ -38,6 +38,7 @@ return {
 				"dockerls",
 				"docker_compose_language_service",
 				"yamlls",
+        "r-languageserver",
 			},
 		})
 

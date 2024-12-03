@@ -9,6 +9,7 @@ return {
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "zig" },
       { "nvim-telescope/telescope-ui-select.nvim" },
+      { "nvim-telescope/telescope-frecency.nvim" },
     },
     keys = {
       {
@@ -18,27 +19,13 @@ return {
         end,
         desc = "Find File (CWD)",
       },
-      -- {
-      --   "<leader>sh",
-      --   function()
-      --     require("telescope.builtin").help_tags()
-      --   end,
-      --   desc = "Find Help",
-      -- },
-      -- {
-      --   "<leader>sH",
-      --   function()
-      --     require("telescope.builtin").highlights()
-      --   end,
-      --   desc = "Find highlight groups",
-      -- },
-      -- {
-      --   "<leader>sM",
-      --   function()
-      --     require("telescope.builtin").man_pages()
-      --   end,
-      --   desc = "Map Pages",
-      -- },
+      {
+        "<leader>sr",
+        function()
+          require("telescope").extensions.frecency.frecency({ workspace = "CWD" })
+        end,
+        desc = "Find File (Frecency)",
+      },
       {
         "<leader>so",
         function()
@@ -124,8 +111,6 @@ return {
         },
       })
       telescope.load_extension("ui-select")
-      -- telescope.load_extension("refactoring")
-      -- telescope.load_extension("notify")
     end,
   },
 }
