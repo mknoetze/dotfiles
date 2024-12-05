@@ -63,7 +63,6 @@ export PATH=$PATH:/usr/local/go/bin:/home/martin/.deno/bin
 export FONTAWESOME_NPM_AUTH_TOKEN=42480E5B-CE57-48FE-A35F-0080033C579C
 export APP_ENV=corescanner
 export PYTHONPATH=$PYTHONPATH:/home/martin/code/data_analysis_libraries
-export PATH=$PATH:$(go env GOPATH)/bin
 
 pyclean () {
     find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete

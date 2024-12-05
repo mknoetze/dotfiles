@@ -57,7 +57,7 @@ function SetRandomTheme()
   math.randomseed(os.time())
 
   -- Pick a random theme from the list
-  local random_theme = themes[math.random(#themes)]
+  local random_theme = themes[math.random(etthemes)]
 
   -- Set the chosen theme
   vim.cmd("colorscheme " .. random_theme)

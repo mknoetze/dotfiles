@@ -7,7 +7,7 @@ return {
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-tree/nvim-web-devicons" },
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "zig" },
+      -- { "nvim-telescope/telescope-fzf-native.nvim", build = "zig" },
       { "nvim-telescope/telescope-ui-select.nvim" },
       { "nvim-telescope/telescope-frecency.nvim" },
     },
@@ -24,7 +24,7 @@ return {
         function()
           require("telescope").extensions.frecency.frecency({ workspace = "CWD" })
         end,
-        desc = "Find File (Frecency)",
+        desc = "Find File (Frecency)", -- Add frecency keybinding
       },
       {
         "<leader>so",
@@ -82,20 +82,29 @@ return {
         pickers = {
           oldfiles = {
             cwd_only = true,
-          }
-        },
-        file_ignore_patterns = {
-          ".git/", "venv", "__pycache__", "%.xlsx", "%.jpg", "%.jpeg", "%.png", "%.webp",
-          "%.pdf", "%.odt", "%.ico", "%.pptx", "%.doc", "%.docx", "%.exe", "%.dll", "%.so",
-          "%.dylib", "%.class", "%.pyc", "%.o", "%.a", "%.out", "%.bin", "%.jar", "%.dat",
-          "%.mp3", "%.ogg", "%.flac", "%.mp4", "%.avi", "%.mkv", "%.mov", "%.zip", "%.tar",
-          "%.gz", "%.bz2", "%.7z", "%.iso", "%.img", "%.dmg", "%.svg",
-          "%.eot", "%.ttf", "%.otf", "%.bak", "%.tmp", "%.xd"
+          },
+          find_files = {
+            hidden = true,
+            file_ignore_patterns = { ".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
+              "%.pdf", "%.mkv", "%.mp4", "%.zip" },
+          },
+          grep_string = {
+            additional_args = { "--hidden" }
+          },
+          live_grep = {
+            additional_args = { "--hidden" }
+          },
         },
         defaults = {
-          preview = {
-            treesitter = false,
+          file_ignore_patterns = {
+            ".git/", "venv", "__pycache__", "%.xlsx", "%.jpg", "%.jpeg", "%.png", "%.webp",
+            "%.pdf", "%.odt", "%.ico", "%.pptx", "%.doc", "%.docx", "%.exe", "%.dll", "%.so",
+            "%.dylib", "%.class", "%.pyc", "%.o", "%.a", "%.out", "%.bin", "%.jar", "%.dat",
+            "%.mp3", "%.ogg", "%.flac", "%.mp4", "%.avi", "%.mkv", "%.mov", "%.zip", "%.tar",
+            "%.gz", "%.bz2", "%.7z", "%.iso", "%.img", "%.dmg", "%.svg",
+            "%.eot", "%.ttf", "%.otf", "%.bak", "%.tmp", "%.xd, package-lock.json"
           },
+
         },
         extensions = {
           fzf = {
