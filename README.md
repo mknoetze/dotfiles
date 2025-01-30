@@ -29,3 +29,9 @@ Set alacritty as default terminal
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which alacritty) 50
 sudo update-alternatives --config x-terminal-emulator
 ```
+
+# C++
+For the clangd linter to detect header files properly, cmake needs to generate a project `compile_commands.json`
+
+This can be done by adding the following flag to cmake
+`-DCMAKE_EXPORT_COMPILE_COMMANDS=YES`

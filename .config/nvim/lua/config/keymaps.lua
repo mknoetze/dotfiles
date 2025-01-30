@@ -14,5 +14,5 @@ vim.keymap.set('n', "<leader>fa", "ggVG", { desc = "Select All Text", silent = t
 vim.keymap.set("v", "<", "<gv", { desc = "(V) Indent to left" })
 vim.keymap.set("v", ">", ">gv", { desc = "(V) Indent to right" })
 vim.keymap.set("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>') -- Replace all instances of highlighted words
-vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")                     -- Move current line up
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")                     -- Move current line down
+vim.keymap.set("v", "<J>", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "<K>", ":move '<-2<CR>gv=gv")

@@ -4,6 +4,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
+
 	config = function()
 		-- import mason
 		local mason = require("mason")
@@ -12,7 +13,6 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 
 		local mason_tool_installer = require("mason-tool-installer")
-
 		-- enable mason and configure icons
 		mason.setup({
 			ui = {
@@ -27,24 +27,35 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
+				"html",
+				"cssls",
+				"tailwindcss",
 				"lua_ls",
+				"pyright",
+				"matlab_ls",
+				"bashls",
+				"marksman",
+				"ltex",
+				"r_language_server",
+				"clangd",
+        "lua_ls",
         "pyright",
         "taplo",
         "ruff",
-				"bashls",
-        "clangd",
-        "jsonls",
         "cmake",
-				"dockerls",
-				"docker_compose_language_service",
-				"yamlls",
+        "jsonls",
+        "dockerls",
+        "docker_compose_language_service",
+        "yamlls",
 			},
+			-- auto-install configured servers (with lspconfig)
+			automatic_installation = true, -- not the same as ensure_installed
 		})
-
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"checkmake",
-				"docker_compose_language_service",
+				"prettier", -- prettier formatter
+				"stylua", -- lua formatter
+				"clang-format",
 			},
 		})
 	end,
