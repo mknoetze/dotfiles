@@ -71,5 +71,6 @@ return {
   {'aktersnurra/no-clown-fiesta.nvim'},
   {'morhetz/gruvbox'},
   {'zenbones-theme/zenbones.nvim'},
-  {'Domeee/mosel.nvim'}
+  {'Domeee/mosel.nvim'},
+  {'rjshkhr/shadow.nvim'}
 }
