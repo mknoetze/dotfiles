@@ -1,0 +1,11 @@
+wm.mod: Mod1
+wm.alt: Mod4
+!regolith.look.path: /usr/share/regolith-look/gruvbox
+regolith.look.path: /usr/share/regolith-look/nord
+wm.client.focused.color.child_border: #BF616A
+/*wm.client.focused.color.child_border: #AAD3E9*/
+wm.gaps.inner.size: 10 
+regolith.wallpaper.color.primary: #2E3440
+regolith.wallpaper.color.secondary: #3B4252
+regolith.wallpaper.file: 
+regolith.wallpaper.color.shading.type: vertical

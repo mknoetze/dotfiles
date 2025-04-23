@@ -1,0 +1,9 @@
+#!/bin/sh
+sudo apt install fd-find build-essential git vim xclip npm nodejs ripgrep tree ninja-build gettext cmake unzip curl htop python3-pip
+pip install -U robotframework-robocop --break-system-packages
+npm install @microsoft/compose-language-service dockerfile-language-server-nodejs
+git config --global core.editor "nvim"
+ln -s $(which fdfind) ~/.local/bin/fd
+git config --global alias.lga "log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold red)%d%C(reset)' --abbrev-commit --date=relative"
+git config --global alias.lg "log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold red)%d%C(reset)' --abbrev-commit --date=relative HEAD"
+~/.config/yazi/install_plugs.sh
