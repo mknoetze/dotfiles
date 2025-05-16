@@ -58,11 +58,6 @@ cdl() {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export ANDROID_HOME=${HOME}/Android/Sdk
-export PATH=$PATH:/usr/local/go/bin:/home/martin/.deno/bin
-export FONTAWESOME_NPM_AUTH_TOKEN=42480E5B-CE57-48FE-A35F-0080033C579C
-export APP_ENV=corescanner
-export PYTHONPATH=$PYTHONPATH:/home/martin/code/data_analysis_libraries
 
 pyclean () {
     find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
