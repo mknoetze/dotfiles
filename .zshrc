@@ -30,54 +30,22 @@ fi
 # Now source oh-my-zsh.sh so that any plugins added in ~/.config/ezsh/zshrc/* files also get loaded
 source $ZSH/oh-my-zsh.sh
 
-
 # Configs that can only work after "source $ZSH/oh-my-zsh.sh", such as Aliases that depend oh-my-zsh plugins
 
 # Now source fzf.zsh , otherwise Ctr+r is overwritten by ohmyzsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"
 
-alias k="k -h"       # show human readable file sizes, in kb, mb etc
-alias ll="ls -lh --almost-all"
-alias lll="ls -ltrh --almost-all"
-alias l="tree -L 2 --dirsfirst -a"
-
-cdl() {
-    dir=$(ls -v1td */ | head -1)
-    if [ -d "$dir" ]; then
-        cd "$dir"
-    else
-        echo "No such directory: $dir"
-    fi
-}
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-pyclean () {
-    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
-}
+mkdir -p ~/.zsh
+for file in ~/.zsh/*; do
+    source "$file"
+done
 
-cdd() {
-        local dir="$1"
-        local dir="${dir:=$HOME}"
-        if [[ -d "$dir" ]]; then
-                cd "$dir" >/dev/null; ll
-        else
-                echo "bash: cdls: $dir: Directory not found"
-        fi
-}
-
-function f() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
+export PATH=$PATH:~/scripts/
+# source ~/.aliasrc

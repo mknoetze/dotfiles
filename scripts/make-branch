@@ -1,0 +1,17 @@
+#!/usr/bin/python
+import argparse
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Create a gitlab branch name")
+
+    parser.add_argument("ticket", type=str, help="The name of the ticket.")
+    parser.add_argument("description", type=str, help="The description of the ticket.")
+
+    args = parser.parse_args()
+
+    ticket = args.ticket
+    description = args.description
+
+    description = description.replace(" ", "-").replace("/", "-").lower()
+    print(f"{ticket}-{description}")

@@ -1,0 +1,40 @@
+# FUNTIONS
+pyclean () {
+    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+}
+
+cdl() {
+    dir=$(ls -v1td */ | head -1)
+    if [ -d "$dir" ]; then
+        cd "$dir"
+    else
+        echo "No such directory: $dir"
+    fi
+}
+
+cdd() {
+        local dir="$1"
+        local dir="${dir:=$HOME}"
+        if [[ -d "$dir" ]]; then
+                cd "$dir" >/dev/null; ll
+        else
+                echo "bash: cdls: $dir: Directory not found"
+        fi
+}
+
+function f() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# ALIASES
+
+alias k="k -h"       # show human readable file sizes, in kb, mb etc
+alias ll="ls -lh --almost-all"
+alias lll="ls -ltrh --almost-all"
+alias l="tree -L 2 --dirsfirst -a"
+
