@@ -24,9 +24,10 @@ return {
 			},
 		})
 
-		mason_lspconfig.setup({
-			-- list of servers for mason to install
+		mason_tool_installer.setup({
 			ensure_installed = {
+				"stylua", -- lua formatter
+				"clang-format",
 				"lua_ls",
 				"pyright",
 				"bashls",
@@ -41,14 +42,6 @@ return {
         "dockerls",
         "docker_compose_language_service",
         "yamlls",
-			},
-			-- auto-install configured servers (with lspconfig)
-			automatic_installation = true, -- not the same as ensure_installed
-		})
-		mason_tool_installer.setup({
-			ensure_installed = {
-				"stylua", -- lua formatter
-				"clang-format",
 			},
 		})
 	end,

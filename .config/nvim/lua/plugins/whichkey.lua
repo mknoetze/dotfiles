@@ -14,6 +14,8 @@ return {
       { "<leader>d", group = "Display"},
       { "<leader>f", group = "File"},
       { "<leader>p", group = "Plugins"},
+      { "<leader>h", group = "Harpoon"},
+      { "<leader>t", group = "Terminal"},
     })
   end,
 }

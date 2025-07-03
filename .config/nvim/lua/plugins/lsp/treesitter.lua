@@ -23,9 +23,7 @@ return {
 					"yaml",
 					"json",
 					"make",
-					"r",
 					"toml",
-					"rst",
 					"bash",
 				},
 				highlight = {

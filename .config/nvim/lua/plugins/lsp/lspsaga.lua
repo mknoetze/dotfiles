@@ -1,10 +1,11 @@
 return {
   "nvimdev/lspsaga.nvim",
-  enabled = false,
+  enabled = true,
   lazy = true,
   event = "LspAttach",
   config = function()
-    vim.keymap.set("n", "<leader>ot", "<cmd>Lspsaga outline<cr>", { desc = "Lspsaga | Code Outline", silent = true })
+    vim.keymap.set("n", "<leader>lt", "<cmd>Lspsaga outline<cr>", { desc = "Lspsaga | Code Outline", silent = true })
+    vim.keymap.set("n", "<leader>lp", "<cmd>Lspsaga peek_definition<cr>", { desc = "Lspsaga | Peek Definition", silent = true })
     require("lspsaga").setup({
       ui = {
         theme = "round",

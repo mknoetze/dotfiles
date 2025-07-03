@@ -7,6 +7,23 @@ vim.opt.guicursor = {
     'n-v-c:block-Cursor',
     'i:ver25-Cursor',
 }
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp",
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.expandtab = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qml",
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.expandtab = true
+  end,
+})
 
 -- Define the AdjustCursor function
 _G.AdjustCursor = function()
@@ -85,4 +102,3 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_set_keymap('n', '<Leader>li', ':lua vim.cmd("DiagnosticsToggleVirtualText")<CR>', { noremap = true, silent = true, desc="Toggle Inline Comments" })
 
 vim.api.nvim_set_keymap('n', '<Leader>lI', ':lua vim.cmd("DiagnosticsToggle")<CR>', { noremap = true, silent = true, desc="Toggle Diagnostics" })
-
