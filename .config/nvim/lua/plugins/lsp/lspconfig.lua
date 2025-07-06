@@ -1,50 +1,8 @@
 return {
-  "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
-    { "folke/neodev.nvim",                   opts = {} },
-  },
-  config = function()
-    local lspconfig = require("lspconfig")
-
-    local mason_lspconfig = require("mason-lspconfig")
-
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
+  { 
+    "neovim/nvim-lspconfig" ,
+    config = function()
     local keymap = vim.keymap
-    lspconfig.clangd.setup({
-      on_attach = lsp_attach,
-      capabilities = capabilities,
-      cmd = {
-          "clangd",
-          "--background-index",
-          "--clang-tidy",
-          "--header-insertion=iwyu",
-          "--completion-style=detailed",
-          "--function-arg-placeholders=true",
-          "--fallback-style=llvm",
-          "--header-insertion=never",
-      },
-      filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-      init_options = {
-        fallbackFlags = { '-std=c++20' },
-        clangdFileStatus = true,
-        clangdSemanticHighlighting = true,
-      },
-      root_dir = lspconfig.util.root_pattern(
-        '.clangd'
-        , '.clang-tidy'
-        , '.clang-format'
-        , 'compile_commands.json'
-        , 'compile_flags.txt'
-        , 'configure.ac'
-        , '.git'
-      ),
-      single_file_support = false,
-    })
-    vim.lsp.enable('qmlls')
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -96,13 +54,25 @@ return {
         keymap.set("n", "<leader>lf", vim.lsp.buf.format, opts)
       end,
     })
-
-    local capabilities = cmp_nvim_lsp.default_capabilities()
-
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
-  end,
+
+  },
+  {
+    "mason-org/mason.nvim",
+    opts = {}
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "mason-org/mason.nvim"
+    },
+    opts = {
+      ensure_installed = {
+        "basedpyright",
+        "ruff",
+        "clangd"
+      }
+    }
+  }
 }

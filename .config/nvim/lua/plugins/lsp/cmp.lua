@@ -1,154 +1,126 @@
 return {
-  "hrsh7th/nvim-cmp",
-  event = { "BufReadPre", "BufNewFile" },
+  "saghen/blink.cmp",
+  event = "InsertEnter",
+  build = "cargo build --release",
   dependencies = {
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-path",
-    "f3fora/cmp-spell",
-
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-    "saadparwaiz1/cmp_luasnip",
-    "lukas-reineke/cmp-under-comparator",
+    -- pictograms
+    "onsails/lspkind.nvim",
+    -- snippets
+    "L3MON4D3/LuaSnip",
   },
-  config = function()
-    local kind_icons = {
-      Text = "󰉿",
-      Method = "󰆧",
-      Function = "󰊕",
-      Constructor = "",
-      Field = "󰜢",
-      Variable = "󰀫",
-      Class = "󰠱",
-      Interface = "",
-      Module = "",
-      Property = "󰜢",
-      Unit = "󰑭",
-      Value = "󰎠",
-      Enum = "",
-      Keyword = "󰌋",
-      Snippet = "",
-      Color = "󰏘",
-      File = "󰈙",
-      Reference = "󰈇",
-      Folder = "󰉋",
-      EnumMember = "",
-      Constant = "󰏿",
-      Struct = "󰙅",
-      Event = "",
-      Operator = "󰆕",
-      TypeParameter = "",
-    }
+  opts = {
+    -- use luasnip for the snippet
+    snippets = { preset = "luasnip" },
+    keymap = {
+      ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<C-e>"] = { "hide", "fallback" },
+      ["<CR>"] = { "accept", "fallback" },
 
-    local cmp = require("cmp")
-    local cmplsp = require("cmp_nvim_lsp")
-    local compare = require("cmp.config.compare")
-    local luasnip = require("luasnip")
-
-    cmplsp.setup()
-
-    cmp.setup({
-      preselect = false,
-      completion = {
-        completeopt = "menu,menuone,preview,noselect",
-      },
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
+      ["<Tab>"] = {
+        function(cmp)
+          return cmp.select_next()
         end,
+        "snippet_forward",
+        "fallback",
       },
-      formatting = {
-        fields = { "abbr", "kind", "menu" },
-        format = function(entry, vim_item)
-          local kind = vim_item.kind
-          vim_item.kind = " " .. (kind_icons[kind] or "?") .. ""
-          local source = entry.source.name
-          vim_item.menu = "[" .. source .. "]"
-
-          return vim_item
+      ["<S-Tab>"] = {
+        function(cmp)
+          return cmp.select_prev()
         end,
+        "snippet_backward",
+        "fallback",
       },
-      sorting = {
-        priority_weight = 1.0,
-        comparators = {
-          compare.offset,
-          compare.exact,
-          compare.score,
-          compare.recently_used,
-          require("cmp-under-comparator").under,
-          compare.kind,
+      ["<Up>"] = { "select_prev", "fallback" },
+      ["<Down>"] = { "select_next", "fallback" },
+      ["<C-p>"] = { "select_prev", "fallback" },
+      ["<C-n>"] = { "select_next", "fallback" },
+      ["<C-up>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-down>"] = { "scroll_documentation_down", "fallback" },
+    },
+    matching = {
+      disallow_fuzzy_matching = false,
+      disallow_fullfuzzy_matching = true,
+      disallow_partial_fuzzy_matching = true,
+      disallow_partial_matching = false,
+      disallow_prefix_unmatching = false,
+      disallow_symbol_nonprefix_matching = false,
+    },
+    sources = {
+      default = {
+        "lsp",
+        "snippets",
+        "buffer",
+        "path",
+      },
+      providers = {
+      },
+    },
+    signature = {
+      enabled = true,
+      window = {
+        show_documentation = true,
+      },
+    },
+    cmdline = {
+      -- disable completion on cmdline `:`
+      enabled = false,
+    },
+    completion = {
+      accept = { auto_brackets = { enabled = true } },
+
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 250,
+        treesitter_highlighting = true,
+        window = { border = "rounded" },
+      },
+      list = {
+        selection = {
+          -- dont auto select completion
+          preselect = false,
+          -- dont insert completion before accept
+          -- instead use "ghost text", see below
+          auto_insert = false,
         },
       },
-      matching = {
-        disallow_fuzzy_matching = false,
-        disallow_fullfuzzy_matching = true,
-        disallow_partial_fuzzy_matching = true,
-        disallow_partial_matching = false,
-        disallow_prefix_unmatching = false,
-        disallow_symbol_nonprefix_matching = false,
+      ghost_text = {
+        enabled = true,
       },
-      min_length = 0, -- allow for `from package import _` in Python
-      mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({ select = false }), -- no not select first item
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      }),
-      sources = {
-        { name = "luasnip",                 max_item_count = 3 },
-        { name = "nvim_lsp",                max_item_count = 50 },
-        { name = "nvim_lua",                max_item_count = 5 },
-        { name = "buffer",                  max_item_count = 5, keyword_length = 3 },
-        { name = "nvim_lsp_signature_help", max_item_count = 10 },
-        { name = "path",                    max_item_count = 50 },
-        {
-          name = "spell",
-          max_item_count = 5,
-          keyword_length = 3,
-          option = {
-            keep_all_entries = false,
-            enable_in_context = function()
-              return true
-            end,
+
+      menu = {
+        -- use lspkind
+        -- see https://cmp.saghen.dev/recipes.html#nvim-web-devicons-lspkind
+        draw = {
+          components = {
+            kind_icon = {
+              text = function(ctx)
+                local icon = ctx.kind_icon
+                if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                  local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+                  if dev_icon then
+                    icon = dev_icon
+                  end
+                else
+                  icon = require("lspkind").symbolic(ctx.kind, {
+                    mode = "symbol",
+                  })
+                end
+                return icon .. ctx.icon_gap
+              end,
+              highlight = function(ctx)
+                local hl = ctx.kind_hl
+                if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                  local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+                  if dev_icon then
+                    hl = dev_hl
+                  end
+                end
+                return hl
+              end,
+            },
           },
         },
       },
-      performance = {
-        max_view_entries = 40,
-      },
-      window = { documentation = cmp.config.window.bordered(), completion = cmp.config.window.bordered() },
-    })
-
-    -- `:` cmdline setup.
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "path" },
-      }, {
-        { name = "cmdline" },
-      }),
-      matching = { disallow_symbol_nonprefix_matching = false },
-    })
-  end,
+    },
+  },
 }
