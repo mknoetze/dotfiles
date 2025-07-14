@@ -75,6 +75,13 @@ return {
         end,
         desc = "Search Diagnostics",
       },
+      {
+        "<leader>sj",
+        function()
+          require("telescope.builtin").jumplist()
+        end,
+        desc = "Search Jumplist",
+      },
     },
     config = function()
       local telescope = require("telescope")
