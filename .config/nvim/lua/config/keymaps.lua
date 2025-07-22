@@ -16,3 +16,10 @@ vim.keymap.set("v", ">", ">gv", { desc = "(V) Indent to right" })
 vim.keymap.set("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>') -- Replace all instances of highlighted words
 vim.keymap.set("v", "<J>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<K>", ":move '<-2<CR>gv=gv")
+
+-- Jump Navigation under <leader>j
+vim.keymap.set('n', '<leader>ji', '<C-i>', { desc = 'Jump Forward', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>jo', '<C-o>', { desc = 'Jump Backward', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>jt', '<C-t>', { desc = 'Jump to Older Tag', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>jb', '<C-^>', { desc = 'Go to Last Buffer', silent = true, noremap = true })
+

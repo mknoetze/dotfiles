@@ -13,7 +13,7 @@ return {
     snippets = { preset = "luasnip" },
     keymap = {
       ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-      ["<C-e>"] = { "hide", "fallback" },
+      -- ["<C-e>"] = { "hide", "fallback" },
       ["<CR>"] = { "accept", "fallback" },
 
       ["<Tab>"] = {
@@ -118,6 +118,18 @@ return {
                 return hl
               end,
             },
+          },
+          label = {
+            text = function(item)
+              return item.label
+            end,
+            highlight = "CmpItemAbbr",
+          },
+          kind = {
+            text = function(item)
+              return item.kind
+            end,
+            highlight = "CmpItemKind",
           },
         },
       },

@@ -16,6 +16,7 @@ return {
       { "<leader>p", group = "Plugins"},
       { "<leader>h", group = "Harpoon"},
       { "<leader>t", group = "Terminal"},
+      { "<leader>j", group = "Jumps"},
     })
   end,
 }
