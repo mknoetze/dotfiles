@@ -53,7 +53,6 @@ end
 set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 set_filetype({ "*.make" }, "makefile")
 
-
 -- Command to toggle inline diagnostics
 vim.api.nvim_create_user_command(
   'DiagnosticsToggleVirtualText',
