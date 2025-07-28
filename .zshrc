@@ -49,3 +49,4 @@ done
 
 export PATH=$PATH:~/scripts/
 # source ~/.aliasrc
+setopt COMBINING_CHARS

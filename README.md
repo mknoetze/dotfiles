@@ -13,6 +13,7 @@ Install the following using the appropriate installation instructions:
 - https://github.com/alacritty/alacritty/blob/master/INSTALL.md
 - https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation
 - https://github.com/jotyGill/ezsh
+- https://wezterm.org/install/linux.html
 
 # Post Install Steps:
 
@@ -22,9 +23,9 @@ chsh -s $(which zsh)
 p10k configure
 ```
 
-Set alacritty as default terminal
+Set wezterm as default terminal
 ```
-sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which alacritty) 50
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $(which wezterm) 51
 sudo update-alternatives --config x-terminal-emulator
 ```
 
