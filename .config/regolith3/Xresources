@@ -1,7 +1,7 @@
 wm.mod: Mod1
 wm.alt: Mod4
 !regolith.look.path: /usr/share/regolith-look/gruvbox
-regolith.look.path: /usr/share/regolith-look/nord
+regolith.look.path: /usr/share/regolith-look/lascaille
 wm.client.focused.color.child_border: #BF616A
 /*wm.client.focused.color.child_border: #AAD3E9*/
 wm.gaps.inner.size: 10 

@@ -5,7 +5,33 @@ return {
     config = function()
       local keymap = vim.keymap
       local lspconfig = require("lspconfig")
-      lspconfig.clangd.setup({
+      local uv = vim.loop
+
+      local root_dir = lspconfig.util.root_pattern(
+        '.clangd',
+        '.clang-tidy',
+        '.clang-format',
+        '.git'
+      )
+
+      local function path(p)
+        local root = root_dir(vim.fn.getcwd()) or vim.fn.getcwd()
+        return root .. "/" .. p
+      end
+
+      local fallbackFlags = {
+        "-std=c++17",
+        "-I" .. path(""),
+        "-I" .. path("src"),
+        "-I" .. path("tests/mocks"),
+      }
+
+      local root = root_dir(vim.fn.getcwd()) or vim.fn.getcwd()
+      local clangd_config_path = root .. "/.clangd"
+
+      local clangd_exists = uv.fs_stat(clangd_config_path) ~= nil
+
+      local clangd_setup_opts = {
         on_attach = lsp_attach,
         capabilities = capabilities,
         cmd = {
@@ -19,22 +45,28 @@ return {
           "--header-insertion=never",
         },
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-        init_options = {
-          fallbackFlags = { '-std=c++20' },
+        root_dir = function(fname)
+          return lspconfig.util.root_pattern(
+            '.clangd',
+            '.clang-tidy',
+            '.clang-format',
+            '.git'
+          )(fname) or vim.fn.getcwd()
+        end,
+        single_file_support = false,
+      }
+
+      if not clangd_exists then
+        -- Only add init_options if no .clangd file exists
+        clangd_setup_opts.init_options = {
+          fallbackFlags = fallbackFlags,
           clangdFileStatus = true,
           clangdSemanticHighlighting = true,
-        },
-        root_dir = lspconfig.util.root_pattern(
-          '.clangd'
-          , '.clang-tidy'
-          , '.clang-format'
-          , 'compile_commands.json'
-          , 'compile_flags.txt'
-          , 'configure.ac'
-          , '.git'
-        ),
-        single_file_support = false,
-      })
+        }
+      end
+
+      lspconfig.clangd.setup(clangd_setup_opts)
+
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
@@ -91,14 +123,14 @@ return {
 
   {
     "mason-org/mason.nvim",
-    opts = {}
+    opts = {},
   },
 
   {
     "mason-org/mason-lspconfig.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
-      "mason-org/mason.nvim"
+      "mason-org/mason.nvim",
     },
     opts = {
       ensure_installed = {
@@ -115,33 +147,10 @@ return {
         "yamlls",
         "jsonls",
       },
-      handlers = {
-        -- Default handler for all servers without a custom setup
-        function(server_name)
-          require("lspconfig")[server_name].setup({})
-        end,
-
-        -- Custom handler for clangd
-        ["clangd"] = function()
-          require("lspconfig").clangd.setup({
-            cmd = {
-              "/usr/lib/llvm-18/bin/clangd",
-              "--background-index",
-              "--clang-tidy",
-              "--header-insertion=iwyu",
-              "--completion-style=detailed",
-              "--function-arg-placeholders",
-              "--header-insertion=never",
-              "--fallback-style=llvm",
-            },
-            init_options = {
-              usePlaceholders = true,
-              completeUnimported = true,
-              clangdFileStatus = true,
-            },
-          })
-        end,
-      }
-    }
-  }
+      -- This disables Mason's automatic enabling of clangd so your custom config is used
+      automatic_installation = true,
+      automatic_setup = true,
+      automatic_enable = { exclude = { "clangd" } },
+    },
+  },
 }
