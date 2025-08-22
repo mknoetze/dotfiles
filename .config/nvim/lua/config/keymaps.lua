@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>ji', '<C-i>', { desc = 'Jump Forward', silent = tru
 vim.keymap.set('n', '<leader>jo', '<C-o>', { desc = 'Jump Backward', silent = true, noremap = true })
 vim.keymap.set('n', '<leader>jt', '<C-t>', { desc = 'Jump to Older Tag', silent = true, noremap = true })
 vim.keymap.set('n', '<leader>jb', '<C-^>', { desc = 'Go to Last Buffer', silent = true, noremap = true })
-vim.keymap.set('n', '<C-r>', 'viw"0p', { desc = 'Replace Word with yank', silent = true, noremap = true })
+vim.keymap.set('n', '<leader>r', 'viw"0p', { desc = 'Replace Word with yank', silent = true, noremap = true })
 vim.keymap.set('n', '<S-r>', '<cmd>normal! V"0p<CR>', { desc = 'Replace line with yank', silent = true, noremap = true })
 vim.keymap.set('n', '<C-p>', '"0p', { desc = 'Paste last yank', silent = true, noremap = true })
 vim.keymap.set('v', '<C-p>', '"0p', { desc = 'Paste last yank', silent = true, noremap = true })
